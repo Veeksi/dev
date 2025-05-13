@@ -1,6 +1,6 @@
 * {
   font-family: JetbrainsMono Nerd Font;
-  font-size: 20px;
+  font-size: 18px;
   min-height: 0;
   padding-right: 2px;
   padding-left: 2px;
@@ -10,14 +10,13 @@
 #waybar {
   background: transparent;
   color: #c6d0f5;
-  margin: 2px 2px;
+  margin: 0;
 }
 
 #workspaces {
   border-radius: 5px;
-  margin: 5px;
+  margin: 5px 5px;
   background: #101010;
-  margin-left: 1rem;
 }
 
 #workspaces button {
@@ -53,26 +52,21 @@
   border-radius: 0px 5px 5px 0px;
 }
 
-#custom-stream_status {
-  background-color: #101010;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
-  border-radius: 0px 5px 5px 0px;
-}
-
-#custom-stream_status.up {
-  color: #c3e88d;
-}
-
-#custom-stream_status.warning {
-  color: #ff9e64;
-}
-
-#custom-stream_status.down {
-  color: #ea999c;
+#cpu {
+  border-radius: 5px 5px 5px 5px;
 }
 
 #memory {
+  background-color: #101010;
+  padding: 0.5rem 1rem;
+  margin: 5px 0.5rem 5px 0.5rem; /* Adds 1rem left margin */
+  border-radius: 5px 5px 5px 5px;
+}
+
+#network {
+  background-color: #101010;
+  padding: 0.5rem 1rem;
+  margin: 5px 0.5rem 5px 0; /* Adds 1rem right margin */
   border-radius: 0px 5px 5px 0px;
 }
 
@@ -115,7 +109,7 @@
 }
 
 #custom-lock {
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 5px 5px 5px;
   color: #babbf1;
 }
 
