@@ -1,15 +1,44 @@
+
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed gimp tldr go fzf rofi-wayland btop bc stylua
-go install github.com/air-verse/air@latest
-sudo pacman -S love --noconfirm --needed
-sudo pacman -S ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols --noconfirm --needed
-sudo pacman -S hyprlock --noconfirm --needed
-sudo pacman -S hyprpaper --noconfirm --needed
-sudo pacman -S ghostty --noconfirm --needed
-sudo pacman -S hyprpaper hyprshot --noconfirm --needed
-sudo pacman -S pavucontrol --noconfirm --needed
-sudo pacman -S rsync --noconfirm --needed
-paru -Syu wlogout-git --noconfirm --needed
+set -euo pipefail
 
-curl -sS https://starship.rs/install.sh | sh
+# Ensure required tools are available
+for cmd in curl go paru; do
+  if ! command -v "$cmd" &>/dev/null; then
+    echo "Error: $cmd is not installed. Please install it first." >&2
+    exit 1
+  fi
+done
+
+# Grouped Pacman packages
+PACMAN_PACKAGES=(
+  gimp tldr go fzf rofi-wayland btop bc stylua
+  love
+  ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
+  hyprlock hyprpaper ghostty
+  pavucontrol rsync
+)
+
+# Grouped Paru (AUR) packages
+AUR_PACKAGES=(
+  wlogout-git hyprshot
+)
+
+echo ">> Installing official repo packages with pacman..."
+sudo pacman -S --noconfirm --needed "${PACMAN_PACKAGES[@]}"
+
+echo ">> Installing AUR packages with paru..."
+paru -Syu --noconfirm --needed "${AUR_PACKAGES[@]}"
+
+echo ">> Installing Go-based Air tool..."
+go install github.com/air-verse/air@latest
+
+if command -v starship &>/dev/null; then
+  echo ">> Starship is already installed. Skipping..."
+else
+  echo ">> Installing Starship prompt..."
+  curl -fsSL https://starship.rs/install.sh | sh
+fi
+
+echo "✅ All packages installed successfully."

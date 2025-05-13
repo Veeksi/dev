@@ -6,6 +6,7 @@ background-opacity = 0.9
 background-blur = false
 
 shell-integration-features = cursor,no-sudo,no-title
+confirm-close-surface = false
 
 # what is a prefix?
 # keybind = ctrl+d=scroll_page_fractional:0.5
