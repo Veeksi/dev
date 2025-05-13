@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 
-curl -f https://zed.dev/install.sh | sh
+set -euo pipefail
+
+# Check if Zed is already installed
+if command -v zed &>/dev/null; then
+  echo ">> Zed is already installed. Skipping installation."
+else
+  echo ">> Installing Zed..."
+  curl -fsSL https://zed.dev/install.sh | sh
+fi

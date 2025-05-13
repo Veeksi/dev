@@ -1,9 +1,48 @@
 #!/usr/bin/env bash
 
-sudo pacman -S zsh
-hash -r
-sudo chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+set -euo pipefail
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# Install Zsh if not already installed
+if ! command -v zsh &>/dev/null; then
+  echo ">> Installing Zsh..."
+  sudo pacman -S --noconfirm --needed zsh
+else
+  echo ">> Zsh is already installed. Skipping..."
+fi
+
+# Change default shell to Zsh if not already set
+if [[ "$SHELL" != "$(which zsh)" ]]; then
+  echo ">> Changing default shell to Zsh..."
+  sudo chsh -s "$(which zsh)" "$USER"
+else
+  echo ">> Zsh is already the default shell."
+fi
+
+# Install Oh My Zsh if not already installed
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  echo ">> Installing Oh My Zsh..."
+  export RUNZSH=no  # Don't switch shell during script
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo ">> Oh My Zsh already installed. Skipping..."
+fi
+
+# Install zsh-autosuggestions plugin
+AUTOSUGGESTIONS_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+if [[ ! -d "$AUTOSUGGESTIONS_DIR" ]]; then
+  echo ">> Installing zsh-autosuggestions..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$AUTOSUGGESTIONS_DIR"
+else
+  echo ">> zsh-autosuggestions already installed. Skipping..."
+fi
+
+# Install zsh-syntax-highlighting plugin
+SYNTAX_HIGHLIGHT_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+if [[ ! -d "$SYNTAX_HIGHLIGHT_DIR" ]]; then
+  echo ">> Installing zsh-syntax-highlighting..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$SYNTAX_HIGHLIGHT_DIR"
+else
+  echo ">> zsh-syntax-highlighting already installed. Skipping..."
+fi
+
+echo "✅ Zsh environment setup complete."

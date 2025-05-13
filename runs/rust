@@ -1,5 +1,27 @@
+
 #!/usr/bin/env bash
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install stylua --features luajit
+set -euo pipefail
 
+# Check if Rust is already installed
+if command -v rustup &>/dev/null; then
+  echo ">> Rust is already installed. Skipping rustup installation."
+else
+  echo ">> Installing Rust toolchain via rustup..."
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# Ensure cargo is available (especially right after install)
+if ! command -v cargo &>/dev/null; then
+  echo "❌ Error: cargo is not available. Please check Rust installation." >&2
+  exit 1
+fi
+
+# Check if stylua is already installed
+if cargo install --list | grep -q '^stylua '; then
+  echo ">> stylua is already installed. Skipping installation."
+else
+  echo ">> Installing stylua with luajit support..."
+  cargo install stylua --features luajit
+fi

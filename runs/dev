@@ -13,7 +13,7 @@ done
 
 # Grouped Pacman packages
 PACMAN_PACKAGES=(
-  gimp tldr go fzf rofi-wayland btop bc stylua
+  gimp tldr go fzf rofi-wayland btop bc stylua imv
   love
   ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
   hyprlock hyprpaper ghostty

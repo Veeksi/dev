@@ -1,4 +1,30 @@
+
 #!/usr/bin/env bash
-# via the install script
-## using curl
-bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
+
+set -euo pipefail
+
+# Check for Python 3 (required by GEF installer)
+if ! command -v python3 &>/dev/null; then
+  echo "❌ Python 3 is required to install GEF."
+  exit 1
+fi
+
+# Try to extract the latest GEF tag from GitHub
+LATEST_GEF_TAG=$(python3 -X utf8 -c 'import urllib.request as r,json as j; x=j.loads(r.urlopen("https://api.github.com/repos/hugsy/gef/tags").read()); print(x[0]["name"])')
+
+GEF_FILE="$HOME/.gef-${LATEST_GEF_TAG}.py"
+
+# Check if that exact GEF version is already installed and sourced
+if [[ -f "$GEF_FILE" ]] && grep -q "source ~/.gef-${LATEST_GEF_TAG}.py" "$HOME/.gdbinit"; then
+  echo ">> GEF ${LATEST_GEF_TAG} is already installed and configured."
+else
+  echo ">> Installing GEF ${LATEST_GEF_TAG}..."
+  bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
+fi
+
+# Optional: GDB availability check
+if ! command -v gdb &>/dev/null; then
+  echo "⚠️ GDB is not installed. GEF will not be usable until you install it."
+else
+  echo "✅ GEF is ready to use with GDB."
+fi
