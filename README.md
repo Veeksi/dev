@@ -1,4 +1,7 @@
-## Goal
-20 minute script using bash
+# Instructions
+- Install packages: `DEV_ENV="$PWD" ./run`
+- Setup dotfiles: `DEV_ENV="$PWD" ~/PWD/dev-env`
 
-No more ansible, simple bashing and I like what i have created
+# After
+- Use: `SUPER + SHIFT + R``
+- Waybar: `SUPER + SHIFT + W`

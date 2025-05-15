@@ -17,7 +17,7 @@ PACMAN_PACKAGES=(
   love
   ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
   hyprlock hyprpaper ghostty
-  pavucontrol rsync
+  pavucontrol rsync brightnessctl
   jdk17-openjdk
 )
 
