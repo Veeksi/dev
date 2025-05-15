@@ -65,3 +65,12 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Starship
 eval "$(starship init zsh)"
+
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Android
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+

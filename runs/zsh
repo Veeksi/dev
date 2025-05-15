@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ZSH_PATH="/bin/zsh"
+
 set -euo pipefail
 
 # Install Zsh if not already installed
@@ -11,11 +13,15 @@ else
 fi
 
 # Change default shell to Zsh if not already set
-if [[ "$SHELL" != "$(which zsh)" ]]; then
-  echo ">> Changing default shell to Zsh..."
-  sudo chsh -s "$(which zsh)" "$USER"
+if grep -q "$ZSH_PATH" /etc/shells; then
+  if [[ "$SHELL" != "$ZSH_PATH" ]]; then
+    echo ">> Changing default shell to Zsh..."
+    sudo chsh -s "$ZSH_PATH" "$USER"
+  else
+    echo ">> Zsh is already the default shell."
+  fi
 else
-  echo ">> Zsh is already the default shell."
+  echo "❌ $ZSH_PATH is not in /etc/shells. Aborting shell change."
 fi
 
 # Install Oh My Zsh if not already installed
