@@ -25,7 +25,7 @@ PACMAN_PACKAGES=(
 
 # Grouped Paru (AUR) packages
 AUR_PACKAGES=(
-  wlogout-git hyprshot android-studio brave-bin go npm
+  wlogout-git hyprshot android-studio brave-bin go npm ghostty
 )
 
 echo ">> Installing official repo packages with pacman..."
