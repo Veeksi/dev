@@ -3,7 +3,7 @@
 - Setup dotfiles: `DEV_ENV="$PWD" ~/PWD/dev-env`
 
 # Keybinds
-- Use: `SUPER + SHIFT + R``
+- Use: `SUPER + SHIFT + R`
 - Waybar: `SUPER + SHIFT + W`
 
 # Wayland support
@@ -14,3 +14,7 @@
 
 ## Vscode
 - Add into desktop entry exec: `--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto`
+
+## Brave
+- Go to this URL: `brave://flags/#ozone-platform-hint`
+- Set: `Wayland`

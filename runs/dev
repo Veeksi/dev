@@ -3,6 +3,8 @@
 
 set -euo pipefail
 
+paru -S go --noconfirm --needed
+
 # Ensure required tools are available
 for cmd in curl go paru; do
   if ! command -v "$cmd" &>/dev/null; then
@@ -23,7 +25,7 @@ PACMAN_PACKAGES=(
 
 # Grouped Paru (AUR) packages
 AUR_PACKAGES=(
-  wlogout-git hyprshot android-studio brave-bin
+  wlogout-git hyprshot android-studio brave-bin go npm
 )
 
 echo ">> Installing official repo packages with pacman..."
