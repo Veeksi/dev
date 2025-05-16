@@ -23,7 +23,7 @@ PACMAN_PACKAGES=(
 
 # Grouped Paru (AUR) packages
 AUR_PACKAGES=(
-  wlogout-git hyprshot android-studio
+  wlogout-git hyprshot android-studio brave-bin
 )
 
 echo ">> Installing official repo packages with pacman..."
@@ -41,13 +41,5 @@ else
   echo ">> Installing Starship prompt..."
   curl -fsSL https://starship.rs/install.sh | sh
 fi
-
-if command -v brave &>/dev/null; then
-  echo ">> Brave is already installed. Skipping..."
-else
-  echo ">> Installing Brave prompt..."
-  curl -fsS https://dl.brave.com/install.sh | sh
-fi
-
 
 echo "✅ All packages installed successfully."
