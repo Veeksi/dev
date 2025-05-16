@@ -1,6 +1,6 @@
 # Instructions
 - Install packages: `DEV_ENV="$PWD" ./run`
-- Setup dotfiles: `DEV_ENV="$PWD" ~/PWD/dev-env`
+- Setup dotfiles: `DEV_ENV="$PWD" ~/dev-env`
 
 # Keybinds
 - Use: `SUPER + SHIFT + R`
