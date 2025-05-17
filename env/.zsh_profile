@@ -1,5 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
-VIM="vim"
+VIM="nvim"
 
 PERSONAL=$XDG_CONFIG_HOME/personal
 DEV_ENV=$HOME/dev

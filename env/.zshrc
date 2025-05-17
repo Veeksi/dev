@@ -24,6 +24,7 @@ source ~/.zsh_profile
 
 # Yay alias
 alias yay='paru'
+alias vim='nvim'
 
 # Disable underline
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
