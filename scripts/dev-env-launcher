@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+cd /home/veikko/git/dev
+DEV_ENV="$PWD" ./dev-env

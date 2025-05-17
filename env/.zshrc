@@ -30,6 +30,9 @@ alias yay='paru'
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
+# Disable bracketed paste
+zle_bracketed_paste=0
+
 # Starship
 eval "$(starship init zsh)"
 
