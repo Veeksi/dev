@@ -13,7 +13,10 @@
 - Read more: https://blog.jetbrains.com/platform/2024/07/wayland-support-preview-in-2024-2/
 
 ## Vscode
+- Find your desktop entry
+    - Usually `/usr/share/applications` or `~/.local/share/applications`
 - Add into desktop entry exec: `--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto`
+- Update entry: `sudo update-desktop-database /usr/share/applications`
 
 ## Brave
 - Go to this URL: `brave://flags/#ozone-platform-hint`
