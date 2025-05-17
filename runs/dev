@@ -19,7 +19,7 @@ PACMAN_PACKAGES=(
   ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
   hyprlock hyprpaper ghostty
   pavucontrol rsync brightnessctl
-  jdk17-openjdk
+  jdk17-openjdk docker
 )
 
 # Grouped Paru (AUR) packages
