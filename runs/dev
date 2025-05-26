@@ -24,7 +24,7 @@ PACMAN_PACKAGES=(
 
 # Grouped Paru (AUR) packages
 AUR_PACKAGES=(
-  hyprshot android-studio brave-bin go npm ghostty void-bin
+  hyprshot android-studio brave-bin go npm ghostty void-bin biome
 )
 
 echo ">> Installing official repo packages with pacman..."
