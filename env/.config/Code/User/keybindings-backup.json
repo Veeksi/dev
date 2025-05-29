@@ -1,0 +1,127 @@
+[
+  // ----- General -----
+
+  // Redo the last undone operation
+  { "key": "ctrl+r", "command": "redo" },
+
+  // ----- Sidebar -----
+
+  // Toggle visibility of the left sidebar (Explorer, Source Control, etc.)
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  // Focus the Files Explorer when the editor is active
+  {
+    "key": "ctrl+e",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "editorTextFocus"
+  },
+
+  // ----- File Explorer Actions -----
+
+  // Create a new file (when focused in Files Explorer, and not in input)
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  // Rename a selected file/folder in Files Explorer
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  // Create a new folder in the explorer (not on root, not readonly, and not focused on input)
+  {
+    "key": "f",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  // Delete selected file/folder
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  // Copy selected file/folder
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  // Paste into the selected folder
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+
+  // ----- Terminal -----
+
+  // Open a new terminal in the current workspace
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.terminal.newInActiveWorkspace"
+  },
+  // Toggle terminal visibility
+  {
+    "key": "ctrl+enter",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  // Kill the current terminal (only when terminal is focused)
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  // Split terminal pane
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  // Move focus to next terminal pane
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  // Move focus to previous terminal pane
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+
+  // ----- Editor Actions -----
+
+  // Format the entire document (if a formatter is available and the file is not read-only)
+  {
+    "key": "shift+alt+f",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+  },
+  // Add the next occurrence of the selected text to the selection
+  {
+    "key": "alt+d",
+    "command": "editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+
+  // ----- Clipboard (Visual Mode / Vim Plugin Specific) -----
+
+  // Copy selected text (Visual mode via Vim extension)
+  {
+    "key": "ctrl+shift+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  },
+  // Paste over selected text (Visual mode via Vim extension)
+  {
+    "key": "ctrl+shift+v",
+    "command": "editor.action.clipboardPasteAction",
+    "when": "editorTextFocus && vim.mode == 'Visual'"
+  }
+]
+

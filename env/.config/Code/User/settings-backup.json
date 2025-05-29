@@ -1,0 +1,203 @@
+{
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.semanticHighlighting.enabled": false
+  },
+  "extensions.experimental.affinity": {
+    "vscode.vim": 1,
+    "asvetliakov.vscode-neovim": 1
+  },
+  "keyboard.dispatch": "keyCode",
+  "css.lint.unknownAtRules": "ignore",
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "dart.previewFlutterUiGuides": true,
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "always",
+    "source.fixAll": "always",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "editor.stickyScroll.enabled": true,
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.cursorSurroundingLines": 10,
+  "editor.suggest.insertMode": "replace",
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 4,
+  "editor.rename.enablePreview": true,
+  "extensions.ignoreRecommendations": true,
+  "files.autoSave": "afterDelay",
+  "files.eol": "\n",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "reactSnippets.settings.typescriptPropsStatePrefix": "interface",
+  "rust-analyzer.check.command": "clippy",
+  "turboConsoleLog.delimiterInsideMessage": "|",
+  // ========================================
+  // Yank Highlighting Settings
+  // ========================================
+
+  // Enable visual highlight when yanking (copying) text
+  "vim.highlightedyank.enable": true,
+
+  // Background color for highlighted yanks (semi-transparent red)
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+
+  // Foreground (text) color during yank highlight
+  "vim.highlightedyank.textColor": "white",
+
+  // ========================================
+  // General Vim Behavior
+  // ========================================
+
+  // Highlight all matches when searching
+  "vim.hlsearch": true,
+
+  // Use <Space> as the <leader> key
+  "vim.leader": "<Space>",
+
+  // Show hybrid line numbers (relative for other lines, absolute for current)
+  "vim.smartRelativeLine": true,
+
+  // Allow use of Ctrl key combinations in normal mode
+  "vim.useCtrlKeys": true,
+
+  // Delegate specific Ctrl keys to VSCode instead of Vim
+  "vim.handleKeys": {
+    "<C-f>": false, // Let VSCode handle Ctrl+F (e.g., search)
+    "<C-p>": false // Let VSCode handle Ctrl+P (e.g., quick file open)
+  },
+
+  // ========================================
+  // Normal Mode Keybindings (Non-Recursive)
+  // ========================================
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Undo/Redo
+    { "before": ["u"], "commands": ["undo"] },
+    { "before": ["<C-r>"], "commands": ["redo"] },
+
+    // Tab navigation
+    { "before": ["H"], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["L"], "commands": ["workbench.action.nextEditor"] },
+
+    // Close the current editor
+    { "before": ["Q"], "commands": ["workbench.action.closeActiveEditor"] },
+
+    // Scroll down/up and center the cursor
+    { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
+    { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
+
+    // Language navigation and peeking
+    { "before": ["g", "p", "d"], "commands": ["editor.action.peekDefinition"] },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    {
+      "before": ["g", "p", "i"],
+      "commands": ["editor.action.peekImplementation"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
+    },
+    { "before": ["g", "q"], "commands": ["editor.action.quickFix"] },
+    { "before": ["g", "t"], "commands": ["editor.action.goToTypeDefinition"] },
+    {
+      "before": ["g", "p", "t"],
+      "commands": ["editor.action.peekTypeDefinition"]
+    },
+
+    // VSCode's Ctrl+R still available
+    { "before": ["<C-r>"], "after": ["<C-r>"] },
+
+    // Quick open (double leader)
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.quickOpen"]
+    }
+  ],
+
+  // ========================================
+  // Visual Mode Keybindings (Non-Recursive)
+  // ========================================
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // Paste over selection but keep clipboard (preserve register)
+    { "before": ["p"], "after": ["p", "g", "v", "y"] }
+  ],
+
+  // ========================================
+  // Visual Mode Keybindings (Recursive)
+  // ========================================
+
+  "vim.visualModeKeyBindings": [
+    // Stay in visual mode when indenting
+    { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+    { "before": [">"], "commands": ["editor.action.indentLines"] },
+
+    // Move lines up or down while maintaining selection
+    { "before": ["J"], "commands": ["editor.action.moveLinesDownAction"] },
+    { "before": ["K"], "commands": ["editor.action.moveLinesUpAction"] },
+
+    // Paste from system clipboard (visual mode)
+    { "before": ["<C-v>"], "after": ["\"", "+", "p"] },
+
+    // Toggle comment (e.g., with <Leader>7)
+    { "before": ["<Leader>", "7"], "commands": ["editor.action.commentLine"] }
+  ],
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f"
+  },
+  "window.titleBarStyle": "custom",
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "notebook.stickyScroll.enabled": true,
+  "workbench.activityBar.location": "top",
+  "window.customTitleBarVisibility": "auto",
+  "prettier.endOfLine": "lf",
+  "window.restoreWindows": "none",
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.useAliasesForRenames": false,
+  "typescript.preferences.useAliasesForRenames": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false
+  },
+  "terminal.integrated.persistentSessionScrollback": 50,
+  "terminal.integrated.scrollback": 2000,
+  "javascript.preferences.renameMatchingJsxTags": false,
+  "typescript.preferences.renameMatchingJsxTags": false,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "rust-analyzer.restartServerOnConfigChange": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+
