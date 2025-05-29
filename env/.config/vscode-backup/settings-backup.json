@@ -95,6 +95,10 @@
     { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
     { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
 
+    // Scroll down/up and center the cursor
+    { "before": ["<C-d>"], "after": ["<C-d>", "z", "z"] },
+    { "before": ["<C-u>"], "after": ["<C-u>", "z", "z"] },
+
     // Language navigation and peeking
     { "before": ["g", "p", "d"], "commands": ["editor.action.peekDefinition"] },
     {
