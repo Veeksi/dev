@@ -1,12 +1,17 @@
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'justinmk/vim-sneak'
+
 set scrolloff=10
 set incsearch
 set tabstop=4
 set nu
 set relativenumber
+set sneak
+set ignorecase smartcase
 let mapleader = ' '
 
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-commentary'
+map <leader>a ggVG
 
 " Undo / Redo
 nmap u u
@@ -23,7 +28,9 @@ nmap Q <Action>(CloseEditor)
 map <C-S-c> "+y
 
 " Pasting
+map <C-v> "+p
 map <C-S-v> "+p
+imap <C-v> <C-r>+
 
 " Moving cursor and keeping cursor centered
 nmap <C-d> <C-d>zz
@@ -32,7 +39,7 @@ nmap <C-u> <C-u>zz
 " Searching and keeping cursor centered
 nmap n nzzzv
 nmap N Nzzzv
- 
+
 " Moving selection
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '<-2<CR>gv=gv
@@ -40,24 +47,26 @@ vmap K :m '<-2<CR>gv=gv
 " Run app
 nmap <leader>r <Action>(Run)
 
+" Config file shortcuts
+map <Leader>src <Action>(IdeaVim.ReloadVimRc.reload)
+
 " Terminal (Ctrl + Q closes terminal)
 nmap <C-enter> <Action>(ActivateTerminalToolWindow)
 
 nmap <leader>q <Action>(QuickJavaDoc)
 nmap <leader>t <Action>(ActivateTerminalToolWindow)
- 
+
 nmap <leader>oi <Action>(OptimizeImports)
- 
+
 nmap <leader>7 <Action>(CommentByLineComment)
 vmap <leader>7 <Action>(CommentByLineComment)
- 
-nmap <leader>f <Action>(FindInPath)
+
+" nmap <leader>f <Action>(FindInPath)
 nmap <leader><leader> <Action>(SearchEverywhere)
- 
-nmap <leader>a <Action>(ShowIntentionActions)
+
 nmap <leader>su <Action>(ShowUsages)
 nmap <leader>u <Action>(FindUsages)
- 
+
 nmap gi :action GotoImplementation<CR>
 nmap gfu<Action>(FindUsages)
 nmap gq :action ShowIntentionActions<CR>
@@ -66,11 +75,22 @@ nmap gt :action GotoTypeDeclaration<CR>
 nmap <leader>gc <Action>(GotoClass)
 nmap <leader>gf <Action>(GotoFile)
 nmap <leader>gs <Action>(GotoSymbol)
- 
+nmap <leader>fu <Action>(FindUsages)
+nmap <leader>cot <Action>(CloseAllEditorsButActive)
+nmap <leader>vb <Action>(ViewBreakpoints)
+
 nmap <leader>b <Action>(ToggleLineBreakpoint)
- 
+
+nmap <leader>ad <Action>(AndroidConnectDebuggerAction)
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S
+
 " Remember these commands:
 " Visual mode brackets:
 " vi( vi{ vi< va( va{ va< vaw
 " Tab comamnds:
 " gt gT
+
