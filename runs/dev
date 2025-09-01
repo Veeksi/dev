@@ -25,7 +25,8 @@ PACMAN_PACKAGES=(
 # Grouped Paru (AUR) packages
 AUR_PACKAGES=(
   hyprshot android-studio brave-bin go npm ghostty void-bin biome mkcert
-  visual-studio-code-bin discord unzip tailscale piavpn-bin
+  visual-studio-code-bin discord unzip tailscale piavpn-bin vlc tableplus
+  pnpm
 )
 
 echo ">> Installing official repo packages with pacman..."
