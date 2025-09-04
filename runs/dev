@@ -24,7 +24,7 @@ PACMAN_PACKAGES=(
 
 # Grouped Paru (AUR) packages
 AUR_PACKAGES=(
-  hyprshot android-studio brave-bin go npm ghostty void-bin biome mkcert
+  hyprshot android-studio brave-bin go npm ghostty biome mkcert
   visual-studio-code-bin discord unzip tailscale piavpn-bin vlc tableplus
   pnpm
 )
