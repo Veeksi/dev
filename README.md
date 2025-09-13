@@ -15,7 +15,7 @@
 ## Vscode
 - Find your desktop entry
     - Usually `/usr/share/applications` or `~/.local/share/applications`
-- Add into desktop entry exec: `--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto`
+- Add into desktop entry exec: `Exec=/usr/bin/code --ozone-platform-hint=wayland`
 - Update entry: `sudo update-desktop-database /usr/share/applications`
 
 ## Brave
