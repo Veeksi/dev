@@ -26,7 +26,7 @@ PACMAN_PACKAGES=(
 AUR_PACKAGES=(
   hyprshot android-studio brave-bin go npm ghostty biome mkcert
   visual-studio-code-bin discord unzip tailscale piavpn-bin vlc tableplus
-  pnpm tree pre-commit redisinsight-bin cursor-bin
+  pnpm tree pre-commit redisinsight-bin cursor-bin rbenv ruby-build
 )
 
 echo ">> Installing official repo packages with pacman..."

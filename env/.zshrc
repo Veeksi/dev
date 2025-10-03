@@ -45,3 +45,5 @@ export PATH=$JAVA_HOME/bin:$PATH
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
+eval "$(rbenv init - zsh)"
