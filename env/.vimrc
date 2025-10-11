@@ -1,7 +1,4 @@
-set number relativenumber
-"" set clipboard=unnamedplus
-
-" .vimrc configuration for Vim
+set clipboard=unnamedplus
 
 " Show a few lines of context around the cursor
 set scrolloff=10
