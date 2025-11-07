@@ -88,9 +88,18 @@ map F <Plug>Sneak_F
 map s <Plug>Sneak_s
 map S <Plug>Sneak_S
 
-" Remember these commands:
-" Visual mode brackets:
-" vi( vi{ vi< va( va{ va< vaw
-" Tab comamnds:
-" gt gT
+" IdeaVim
+" IDE commands:
+" - Ctrl + A
+" - Ctrl + F
+
+" Android studio settings:
+" Vscode keymap
+" Remove:
+" - Debug - F5
+" Add:
+" - Selection for next occurrance - Alt + D
+" Modify:
+" - Next difference: F5
+" - Previous difference: F6
 
