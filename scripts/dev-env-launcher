@@ -1,5 +1,11 @@
 #!/bin/bash
 set -e
 
-cd /home/veikko/git/dev
+DEV_ROOT="$HOME/git/dev"
+cd "$DEV_ROOT"
+
 DEV_ENV="$PWD" ./dev-env
+
+pkill waybar || true
+sleep 0.2
+waybar &
