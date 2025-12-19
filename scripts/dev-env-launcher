@@ -8,4 +8,7 @@ DEV_ENV="$PWD" ./dev-env
 
 pkill waybar || true
 sleep 0.2
+pkill hyprpaper || true
+sleep 0.2
+hyprpaper &
 waybar &
