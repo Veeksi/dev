@@ -18,7 +18,7 @@ PACMAN_PACKAGES=(
   gimp tldr go fzf rofi-wayland btop imv
   ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
   hyprlock hyprpaper ghostty
-  pavucontrol rsync brightnessctl
+  pavucontrol rsync brightnessctl noto-fonts-emoji
   jdk17-openjdk docker docker-compose nvim mkcert
 )
 
