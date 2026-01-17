@@ -27,7 +27,7 @@ AUR_PACKAGES=(
   hyprshot brave-bin go npm ghostty biome mkcert ly
   visual-studio-code-bin discord unzip tailscale piavpn-bin vlc tableplus
   pnpm tree pre-commit redisinsight-bin cursor-bin rbenv ruby-build wl-clipboard
-  ttf-jetbrains-mono ttf-fira-code ttf-dejavu ttf-liberation
+  ttf-jetbrains-mono ttf-fira-code ttf-dejavu ttf-liberation scrcpy
 )
 
 echo ">> Installing official repo packages with pacman..."
