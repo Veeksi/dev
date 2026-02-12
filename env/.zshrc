@@ -20,10 +20,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # Disable bracketed paste
 zle_bracketed_paste=0
 
-# fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
 # Starship
 eval "$(starship init zsh)"
 
@@ -41,6 +37,10 @@ export PATH="$HOME/.local/share/gem/ruby/3.4.0/bin:$PATH"
 
 # Vim
 bindkey -v
+
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # Ruby
 eval "$(rbenv init - zsh)"

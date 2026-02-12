@@ -1,105 +1,166 @@
-Plug 'machakann/vim-highlightedyank'
-Plug 'tpope/vim-commentary'
-Plug 'justinmk/vim-sneak'
-
-set scrolloff=10
-set incsearch
-set tabstop=4
-set nu
-set relativenumber
-set sneak
-set ignorecase smartcase
-let mapleader = ' '
-
-map <leader>a ggVG
-
-" Undo / Redo
-nmap u u
-nmap <C-r> <C-r>
-
-" Tab (editor) navigation
-nmap H :action PreviousTab<CR>
-nmap L :action NextTab<CR>
-
-" Close the current editor
-nmap Q <Action>(CloseEditor)
-
-" Yanking
-map <C-S-c> "+y
-
-" Pasting
-map <C-v> "+p
-map <C-S-v> "+p
-imap <C-v> <C-r>+
-
-" Moving cursor and keeping cursor centered
-nmap <C-d> <C-d>zz
-nmap <C-u> <C-u>zz
-
-" Searching and keeping cursor centered
-nmap n nzzzv
-nmap N Nzzzv
-
-" Moving selection
-vmap J :m '>+1<CR>gv=gv
-vmap K :m '<-2<CR>gv=gv
-
-" Run app
-nmap <leader>r <Action>(Run)
-
-" Config file shortcuts
-map <Leader>src <Action>(IdeaVim.ReloadVimRc.reload)
-
-" Terminal (Ctrl + Q closes terminal)
-nmap <C-enter> <Action>(ActivateTerminalToolWindow)
-
-nmap <leader>q <Action>(QuickJavaDoc)
-nmap <leader>t <Action>(ActivateTerminalToolWindow)
-
-nmap <leader>oi <Action>(OptimizeImports)
-
-nmap <leader>7 <Action>(CommentByLineComment)
-vmap <leader>7 <Action>(CommentByLineComment)
-
-" nmap <leader>f <Action>(FindInPath)
-nmap <leader><leader> <Action>(SearchEverywhere)
-
-nmap <leader>su <Action>(ShowUsages)
-nmap <leader>u <Action>(FindUsages)
-
-nmap gi :action GotoImplementation<CR>
-nmap gfu<Action>(FindUsages)
-nmap gq :action ShowIntentionActions<CR>
-nmap gt :action GotoTypeDeclaration<CR>
-
-nmap <leader>gc <Action>(GotoClass)
-nmap <leader>gf <Action>(GotoFile)
-nmap <leader>gs <Action>(GotoSymbol)
-nmap <leader>fu <Action>(FindUsages)
-nmap <leader>cot <Action>(CloseAllEditorsButActive)
-nmap <leader>vb <Action>(ViewBreakpoints)
-
-nmap <leader>b <Action>(ToggleLineBreakpoint)
-
-nmap <leader>ad <Action>(AndroidConnectDebuggerAction)
-
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map s <Plug>Sneak_s
-map S <Plug>Sneak_S
-
-" IdeaVim
-" IDE commands:
-" - Ctrl + A
-" - Ctrl + F
-
-" Android studio settings:
-" Vscode keymap
-" Remove:
-" - Debug - F5
-" Add:
-" - Selection for next occurrance - Alt + D
-" Modify:
-" - Next difference: F5
-" - Previous difference: F6
-
+" FIND ALL ACTIONS BY USING :actionlist
+ " Find specific action :actionlist logcat
+ 
+ " Configuration
+ set scrolloff=10
+ set incsearch
+ set tabstop=4
+ set nu
+ set relativenumber
+ set ignorecase smartcase
+ 
+ " Plugins
+ set idearefactormode=keep
+ set ideajoin
+ set sneak
+ set commentary
+ set highlightedyank
+ 
+ let mapleader = ' '
+ 
+ " Select all
+ map <leader>a ggVG
+ 
+ " Undo / Redo
+ nmap u u
+ nmap <C-r> <C-r>
+ 
+ " Tab (editor) navigation
+ nmap H :action PreviousTab<CR>
+ nmap L :action NextTab<CR>
+ 
+ nmap <leader>fl <Action>(NextSplitter)
+ nmap <leader>fh <Action>(PrevSplitter)
+ 
+ " Close tab
+ nmap <leader>ct <Action>(CloseContent)
+ nmap <leader>q <Action>(CloseContent)
+ 
+ " Splits
+ nmap <leader>sv <Action>(SplitVertically)
+ nmap <leader>sh <Action>(SplitHorizontally)
+ 
+  " Focus navigation using Ctrl + hjkl (much faster)
+ nmap <C-h> <C-w>h
+ nmap <C-j> <C-w>j
+ nmap <C-k> <C-w>k
+ nmap <C-l> <C-w>l
+ 
+ " Yanking
+ map <C-S-c> "+y
+ 
+ " Pasting
+ map <C-v> "+p
+ map <C-S-v> "+p
+ imap <C-v> <C-r>+
+ 
+ " Moving cursor and keeping cursor centered
+ nmap <C-d> <C-d>zz
+ nmap <C-u> <C-u>zz
+ 
+ " Searching and keeping cursor centered
+ nmap n nzzzv
+ nmap N Nzzzv
+ 
+ " Moving selection or IDE moving
+ vmap J :m '>+1<CR>gv=gv
+ vmap K :m '<-2<CR>gv=gv
+ nnoremap <A-j> :action MoveLineDown<CR>
+ nnoremap <A-k> :action MoveLineUp<CR>
+ vnoremap <A-j> :action MoveLineDown<CR>
+ vnoremap <A-k> :action MoveLineUp<CR>
+ 
+ " Config file shortcuts
+ map <Leader>src <Action>(IdeaVim.ReloadVimRc.reload)
+ 
+ " Terminal (Ctrl + Q closes terminal)
+ nmap <C-enter> <Action>(ActivateTerminalToolWindow)
+ nmap <leader>t <Action>(ActivateTerminalToolWindow)
+ 
+ " Optimize imports
+ nmap <leader>oi <Action>(OptimizeImports)
+ 
+ " Commenting
+ nmap <leader>7 <Action>(CommentByLineComment)
+ vmap <leader>7 <Action>(CommentByLineComment)
+ 
+ " Search (OR shift-shift)
+ nmap <leader><leader> <Action>(SearchEverywhere)
+ 
+ " Show git
+ nmap <leader>sg <Action>(ActivateCommitToolWindow)
+ 
+ " Show project
+ nmap <leader>sp <Action>(ActivateProjectToolWindow)
+ nmap <leader>e <Action>(ActivateProjectToolWindow)
+ 
+ " Show usage and find usage
+ nmap <leader>su <Action>(ShowUsages)
+ nmap <leader>fu <Action>(FindUsages)
+ nmap gfu<Action>(FindUsages)
+ 
+ " Go to
+ nmap gi :action GotoImplementation<CR>
+ nmap gt :action GotoTypeDeclaration<CR>
+ nmap <leader>fa <Action>(GotoAction)
+ nmap <leader>gc <Action>(GotoClass)
+ nmap <leader>gf <Action>(GotoFile)
+ nmap gq :action ShowIntentionActions<CR>
+ nmap gs :action GotoSuperMethod<CR>
+ nmap <leader>gs <Action>(GotoSuperMethod)
+ nmap <leader>d <Action>(QuickJavaDoc)
+ 
+ " Close editors
+ nmap Q <Action>(CloseEditor)
+ nmap <leader>cot <Action>(CloseAllEditorsButActive)
+ nmap <leader>ca <Action>(CloseAllEditors)
+ 
+ " Breakpoints
+ nmap <leader>vb <Action>(ViewBreakpoints)
+ nmap <leader>b <Action>(ToggleLineBreakpoint)
+ 
+ " Attach debugger
+ nmap <leader>ad <Action>(AndroidConnectDebuggerAction)
+ 
+ " Navigating
+ nmap <leader>n <Action>(ShowNavBar)
+ nmap <Leader>f <Action>(FileStructurePopup)
+ 
+ " Logcat
+ nmap <leader>cl <Action>(Logcat.ClearLogcat)
+ nmap <leader>ol <Action>(ActivateLogcatToolWindow)
+ 
+ " Run, debug, stop, sync
+ nmap <Leader>ra <Action>(Run)
+ nmap <Leader>da <Action>(Debug)
+ nmap <Leader>sta <Action>(Stop)
+ nmap <leader>sya <Action>(Android.SyncProject)
+ nmap <leader>rat <Action>(RunClass)
+ 
+ " Indenting
+ vnoremap < <gv
+ vnoremap > >gv
+ 
+ " Projects
+ nmap <leader>op <Action>(ManageRecentProjects)
+ 
+ " Restore default layout
+ nmap <leader>rl <Action>(RestoreDefaultLayout)
+ 
+ " Remember these commands:
+ 
+ " Visual mode brackets:
+ " vi( vi{ vi< va( va{ va< vaw
+ 
+ " Center screen
+ " zz
+ 
+ " Show recent files
+ " Ctrl + R
+ 
+ " Commenting
+ " gcc or <Space>7
+ 
+ " Using sneak
+ " Press "s" -> "is"
+ " Goes to next "is" word
