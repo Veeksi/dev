@@ -1,14 +1,13 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
-DEV_ROOT="$HOME/git/dev"
-cd "$DEV_ROOT"
+: "${DEV_ENV:?DEV_ENV is not set}"
+cd "$DEV_ENV"
 
 DEV_ENV="$PWD" ./dev-env
 
-pkill waybar || true
-sleep 0.2
-pkill hyprpaper || true
+pkill -x waybar || true
+pkill -x hyprpaper || true
 sleep 0.2
 hyprpaper &
 waybar &

@@ -6,7 +6,7 @@ export VISUAL="nvim"
 export GIT_EDITOR="$EDITOR"
 
 # Dev paths
-export DEV_ENV_HOME="$HOME/git/dev"
+export DEV_ENV="$HOME/git/dev"
 
 # Go
 export GOPATH="$HOME/.local/go"
