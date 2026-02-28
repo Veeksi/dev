@@ -82,8 +82,6 @@ nnoremap gR :action FindUsages<CR>
 " --- Moving Lines / Selection ---
 vnoremap J :m '>+1<CR>gv
 vnoremap K :m '<-2<CR>gv
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
 nnoremap <A-j> :action MoveLineDown<CR>
 nnoremap <A-k> :action MoveLineUp<CR>
 vnoremap <A-j> :action MoveLineDown<CR>
@@ -140,8 +138,8 @@ nnoremap s :action AceAction<CR>
 vnoremap s :action AceAction<CR>
 
 " --- Jump List (Inversed as requested) ---
-nnoremap <C-i> :action Back<CR>
-nnoremap <C-o> :action Forward<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
 
 " --- Quick Tabs ---
 nnoremap <leader>1 :action GoToTab1<CR>
