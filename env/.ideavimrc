@@ -80,8 +80,10 @@ nnoremap gr :action ShowUsages<CR>
 nnoremap gR :action FindUsages<CR>
 
 " --- Moving Lines / Selection ---
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv
+vnoremap K :m '<-2<CR>gv
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
 nnoremap <A-j> :action MoveLineDown<CR>
 nnoremap <A-k> :action MoveLineUp<CR>
 vnoremap <A-j> :action MoveLineDown<CR>
