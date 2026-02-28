@@ -1,0 +1,11 @@
+# Studio settings
+- AdvancedSettings
+- AiPluginSettings
+- DebuggerSettings, Debugger
+- Editor Colors
+- ExperimentalUI
+- Keymaps
+- Keymaps (schemas)
+- SettingsSyncSettings
+- UI Settings
+- VimSettings, VimKeySettings, VimEditorSettings
