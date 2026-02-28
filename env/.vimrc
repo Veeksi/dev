@@ -63,14 +63,3 @@ vnoremap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-" =========================
-" Jump list (match your "inversed" ideavim)
-" Vim default is: <C-o> back, <C-i> forward.
-" If you REALLY want inverted like ideavim:
-nnoremap <C-i> <C-o>
-nnoremap <C-o> <C-i>
-
-" =========================
-" Reload vimrc
-" =========================
-nnoremap <leader>src :source $MYVIMRC<CR>
