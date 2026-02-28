@@ -63,7 +63,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " --- IDE Search & Navigation ---
-nnoremap <leader>se :action SearchEverywhere<CR>
+nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>fa :action GotoAction<CR>
 nnoremap <leader>gc :action GotoClass<CR>
 nnoremap <leader>gf :action GotoFile<CR>
