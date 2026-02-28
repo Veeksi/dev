@@ -1,6 +1,8 @@
 set clipboard=unnamedplus
 let mapleader=" "
 
+syntax on
+
 set scrolloff=15
 set incsearch
 set ignorecase
@@ -10,6 +12,7 @@ set number
 set relativenumber
 set timeout
 set timeoutlen=300
+set hlsearch
 
 " =========================
 " General mappings
