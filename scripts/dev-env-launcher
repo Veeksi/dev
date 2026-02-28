@@ -9,5 +9,6 @@ DEV_ENV="$PWD" ./dev-env
 pkill -x waybar || true
 pkill -x hyprpaper || true
 sleep 0.2
-hyprpaper &
-waybar &
+nohup hyprpaper &>/dev/null &
+nohup waybar &>/dev/null &
+disown -a

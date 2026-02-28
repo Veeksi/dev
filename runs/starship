@@ -10,14 +10,5 @@ else
   curl -fsSL https://starship.rs/install.sh | sh -s -- -y
 fi
 
-# Optional: add to shell config if not already present
-SHELL_RC="$HOME/.zshrc"  # Change to .bashrc or .config/fish/config.fish if needed
-
-if ! grep -q 'eval "$(starship init' "$SHELL_RC"; then
-  echo '>> Adding Starship init line to shell config...'
-  echo 'eval "$(starship init zsh)"' >> "$SHELL_RC"
-else
-  echo ">> Starship init line already present in $SHELL_RC"
-fi
-
+# Init line is in env/.zshrc; run dev-env to sync dotfiles after install.
 echo "✅ Starship installation complete. Restart your shell to see changes."

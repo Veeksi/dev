@@ -16,7 +16,7 @@ if [[ -z "${DEV_ENV:-}" ]]; then
     exit 1
 fi
 
-if [[ "${1:-}" == "--dry" ]]; then
+if [[ "${1:-}" == "--dry" || "${1:-}" == "--dry-run" ]]; then
     dry_run="1"
 fi
 
@@ -65,7 +65,11 @@ copy_file() {
 
     log "removing: $dst"
     if [[ "$dry_run" == "0" ]]; then
-        rm -f "$dst"
+        if [[ -d "$dst" ]]; then
+            rm -rf "$dst"
+        else
+            rm -f "$dst"
+        fi
     fi
 
     log "copying: $src to $dst"
