@@ -1,12 +1,22 @@
-# Instructions
-- Install packages: `DEV_ENV="$PWD" ./run`
-- Setup dotfiles: `DEV_ENV="$PWD" ./dev-env`
+# dev
 
-# Keybinds
+Dotfiles and dev environment setup for Arch Linux / Hyprland.
+
+## Instructions
+
+- **Install packages:** `DEV_ENV="$PWD" ./run` (optionally pass a name to run only matching scripts, e.g. `./run rust`)
+- **Setup dotfiles:** `DEV_ENV="$PWD" ./dev-env`
+- **Apply dotfiles and restart waybar/hyprpaper:** `DEV_ENV="$PWD" ./scripts/dev-env-launcher`
+
+Preview changes without modifying the system:
+- `DEV_ENV="$PWD" ./run --dry` or `./run --dry-run`
+- `DEV_ENV="$PWD" ./dev-env --dry`
+
+## Keybinds
 - Use: `SUPER + SHIFT + R`
 - Waybar: `SUPER + SHIFT + W`
 
-# Wayland support
+## Wayland support
 ## Android studio
 - Go to: `Help -> Edit Custom WM Options`
 - Put this: `-Dawt.toolkit.name=WLToolkit`

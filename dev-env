@@ -35,9 +35,8 @@ sync_dir() {
     local dst="$2"
 
     log "syncing: $src -> $dst"
-    mkdir -p "$dst"
-
     if [[ "$dry_run" == "0" ]]; then
+        mkdir -p "$dst"
         rsync -a --delete "$src/" "$dst/"
     else
         rsync -a --delete --dry-run "$src/" "$dst/"

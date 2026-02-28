@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-if [ -z "$DEV_ENV" ]; then
+if [[ -z "${DEV_ENV:-}" ]]; then
     echo "env var DEV_ENV needs to be present"
     exit 1
 fi
@@ -14,8 +16,7 @@ grep=""
 dry_run="0"
 
 while [[ $# -gt 0 ]]; do
-    echo "ARG: \"$1\""
-    if [[ "$1" == "--dry" ]]; then
+    if [[ "$1" == "--dry" || "$1" == "--dry-run" ]]; then
         dry_run="1"
     else
         grep="$1"
@@ -31,22 +32,20 @@ log() {
     fi
 }
 
-log "RUN: env: $env -- grep: $grep"
+log "RUN: env: $DEV_ENV -- grep: $grep"
 
-runs_dir=`find $script_dir/runs -mindepth 1 -maxdepth 1 -executable`
-
-for s in $runs_dir; do
-    if basename $s | grep -vq "$grep"; then
+while IFS= read -r -d '' s; do
+    if [[ -n "$grep" ]] && ! basename "$s" | grep -q "$grep"; then
         log "grep \"$grep\" filtered out $s"
         continue
     fi
 
     log "running script: $s"
 
-    if [[ $dry_run == "0" ]]; then
-        $s
+    if [[ "$dry_run" == "0" ]]; then
+        "$s"
     fi
-done
+done < <(find "$script_dir/runs" -mindepth 1 -maxdepth 1 -executable -print0 | sort -z)
 
 #remove_files() {
 #    pushd $1
