@@ -63,7 +63,7 @@ copy_file() {
 sync_dir "$DEV_ENV/env/.config" "$XDG_CONFIG_HOME"
 
 # Copy dotfiles
-copy_file "$DEV_ENV/env/.zsh_profile" "$HOME/.zsh_profile"
+# copy_file "$DEV_ENV/env/.zsh_profile" "$HOME/.zsh_profile"
 copy_file "$DEV_ENV/env/.zshrc" "$HOME/.zshrc"
 copy_file "$DEV_ENV/env/.vimrc" "$HOME/.vimrc"
 copy_file "$DEV_ENV/env/.ideavimrc" "$HOME/.ideavimrc"
