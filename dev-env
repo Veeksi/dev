@@ -44,6 +44,22 @@ sync_dir() {
     fi
 }
 
+sync_config_entries() {
+    local src="$1"
+    local dst="$2"
+
+    for entry in "$src"/*; do
+        local name
+        name="$(basename "$entry")"
+
+        if [[ -d "$entry" ]]; then
+            sync_dir "$entry" "$dst/$name"
+        elif [[ -f "$entry" ]]; then
+            copy_file "$entry" "$dst/$name"
+        fi
+    done
+}
+
 copy_file() {
     local src="$1"
     local dst="$2"
@@ -59,8 +75,8 @@ copy_file() {
     fi
 }
 
-# Sync config dirs
-sync_dir "$DEV_ENV/env/.config" "$XDG_CONFIG_HOME"
+# Sync each config entry individually so unmanaged configs are preserved
+sync_config_entries "$DEV_ENV/env/.config" "$XDG_CONFIG_HOME"
 
 # Copy dotfiles
 copy_file "$DEV_ENV/env/.zshrc" "$HOME/.zshrc"
