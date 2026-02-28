@@ -1,52 +1,79 @@
-export XDG_CONFIG_HOME=$HOME/.config
-VIM="nvim"
+export XDG_CONFIG_HOME="$HOME/.config"
 
-PERSONAL=$XDG_CONFIG_HOME/personal
-DEV_ENV=$HOME/dev
-for i in `find -L $PERSONAL`; do
-    source $i
-done
+# Editors
+export EDITOR="nvim"
+export VISUAL="nvim"
+export GIT_EDITOR="$EDITOR"
 
-## All that sweet sweet fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Dev paths
+export DEV_ENV_HOME="$HOME/git/dev"
 
-export GOPATH=$HOME/.local/go
-export GIT_EDITOR=$VIM
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
-export DEV_ENV_HOME="$HOME/personal/dev"
+# Go
+export GOPATH="$HOME/.local/go"
 
-dev_env() {
+# Java
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
 
+# Android
+export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+
+# Ruby gems path (keep only if you truly need this exact version path)
+export GEM_HOME="$HOME/.local/share/gem/ruby/3.4.0"
+export GEM_PATH="$GEM_HOME"
+export PATH="$GEM_HOME/bin:$PATH"
+
+# Flyctl (only if set)
+if [[ -n "${FLYCTL_INSTALL:-}" ]]; then
+  export PATH="$FLYCTL_INSTALL/bin:$PATH"
+fi
+
+# ---------------------------
+# PATH helpers (no duplicates)
+# ---------------------------
+path_prepend() {
+  local p="$1"
+  [[ -d "$p" ]] || return 0
+  case ":$PATH:" in
+    *":$p:"*) ;;
+    *) PATH="$p:$PATH" ;;
+  esac
 }
 
+path_append() {
+  local p="$1"
+  [[ -d "$p" ]] || return 0
+  case ":$PATH:" in
+    *":$p:"*) ;;
+    *) PATH="$PATH:$p" ;;
+  esac
+}
+
+# Preferred PATH order (front)
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/.local/go/bin"
+path_prepend "/usr/local/go/bin"
+path_prepend "$JAVA_HOME/bin"
+path_prepend "$ANDROID_HOME/emulator"
+path_prepend "$ANDROID_HOME/tools"
+path_prepend "$ANDROID_HOME/tools/bin"
+path_prepend "$ANDROID_HOME/platform-tools"
+path_prepend "$HOME/.zig"
+path_prepend "$HOME/.local/zig"
+
+# Append
+path_append "$HOME/.cargo/bin"
+
+export PATH
+
+# ---------------------------
+# Small helper functions
+# ---------------------------
 catr() {
-    tail -n "+$1" $3 | head -n "$(($2 - $1 + 1))"
+  # catr <startLine> <endLine> <file>
+  tail -n "+$1" "$3" | head -n "$(($2 - $1 + 1))"
 }
 
 cat1Line() {
-    cat $1 | tr -d "\n"
+  tr -d "\n" < "$1"
 }
-
-
-addToPath() {
-    if [[ "$PATH" != *"$1"* ]]; then
-        export PATH=$PATH:$1
-    fi
-}
-
-addToPathFront() {
-    if [[ ! -z "$2" ]] || [[ "$PATH" != *"$1"* ]]; then
-        export PATH=$1:$PATH
-    fi
-}
-
-addToPathFront $HOME/.zig
-addToPathFront $HOME/.local/bin
-
-# do i need this one?
-addToPathFront $HOME/.local/go/bin
-addToPathFront /usr/local/go/bin
-addToPath $HOME/.cargo/bin
-addToPath $HOME/personal/ghostty/zig-out/bin
-addToPath $HOME/.local/personal
-addToPathFront $HOME/.local/zig true 

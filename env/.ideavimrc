@@ -1,166 +1,179 @@
 " FIND ALL ACTIONS BY USING :actionlist
- " Find specific action :actionlist logcat
- 
- " Configuration
- set scrolloff=10
- set incsearch
- set tabstop=4
- set nu
- set relativenumber
- set ignorecase smartcase
- 
- " Plugins
- set idearefactormode=keep
- set ideajoin
- set sneak
- set commentary
- set highlightedyank
- 
- let mapleader = ' '
- 
- " Select all
- map <leader>a ggVG
- 
- " Undo / Redo
- nmap u u
- nmap <C-r> <C-r>
- 
- " Tab (editor) navigation
- nmap H :action PreviousTab<CR>
- nmap L :action NextTab<CR>
- 
- nmap <leader>fl <Action>(NextSplitter)
- nmap <leader>fh <Action>(PrevSplitter)
- 
- " Close tab
- nmap <leader>ct <Action>(CloseContent)
- nmap <leader>q <Action>(CloseContent)
- 
- " Splits
- nmap <leader>sv <Action>(SplitVertically)
- nmap <leader>sh <Action>(SplitHorizontally)
- 
-  " Focus navigation using Ctrl + hjkl (much faster)
- nmap <C-h> <C-w>h
- nmap <C-j> <C-w>j
- nmap <C-k> <C-w>k
- nmap <C-l> <C-w>l
- 
- " Yanking
- map <C-S-c> "+y
- 
- " Pasting
- map <C-v> "+p
- map <C-S-v> "+p
- imap <C-v> <C-r>+
- 
- " Moving cursor and keeping cursor centered
- nmap <C-d> <C-d>zz
- nmap <C-u> <C-u>zz
- 
- " Searching and keeping cursor centered
- nmap n nzzzv
- nmap N Nzzzv
- 
- " Moving selection or IDE moving
- vmap J :m '>+1<CR>gv=gv
- vmap K :m '<-2<CR>gv=gv
- nnoremap <A-j> :action MoveLineDown<CR>
- nnoremap <A-k> :action MoveLineUp<CR>
- vnoremap <A-j> :action MoveLineDown<CR>
- vnoremap <A-k> :action MoveLineUp<CR>
- 
- " Config file shortcuts
- map <Leader>src <Action>(IdeaVim.ReloadVimRc.reload)
- 
- " Terminal (Ctrl + Q closes terminal)
- nmap <C-enter> <Action>(ActivateTerminalToolWindow)
- nmap <leader>t <Action>(ActivateTerminalToolWindow)
- 
- " Optimize imports
- nmap <leader>oi <Action>(OptimizeImports)
- 
- " Commenting
- nmap <leader>7 <Action>(CommentByLineComment)
- vmap <leader>7 <Action>(CommentByLineComment)
- 
- " Search (OR shift-shift)
- nmap <leader><leader> <Action>(SearchEverywhere)
- 
- " Show git
- nmap <leader>sg <Action>(ActivateCommitToolWindow)
- 
- " Show project
- nmap <leader>sp <Action>(ActivateProjectToolWindow)
- nmap <leader>e <Action>(ActivateProjectToolWindow)
- 
- " Show usage and find usage
- nmap <leader>su <Action>(ShowUsages)
- nmap <leader>fu <Action>(FindUsages)
- nmap gfu<Action>(FindUsages)
- 
- " Go to
- nmap gi :action GotoImplementation<CR>
- nmap gt :action GotoTypeDeclaration<CR>
- nmap <leader>fa <Action>(GotoAction)
- nmap <leader>gc <Action>(GotoClass)
- nmap <leader>gf <Action>(GotoFile)
- nmap gq :action ShowIntentionActions<CR>
- nmap gs :action GotoSuperMethod<CR>
- nmap <leader>gs <Action>(GotoSuperMethod)
- nmap <leader>d <Action>(QuickJavaDoc)
- 
- " Close editors
- nmap Q <Action>(CloseEditor)
- nmap <leader>cot <Action>(CloseAllEditorsButActive)
- nmap <leader>ca <Action>(CloseAllEditors)
- 
- " Breakpoints
- nmap <leader>vb <Action>(ViewBreakpoints)
- nmap <leader>b <Action>(ToggleLineBreakpoint)
- 
- " Attach debugger
- nmap <leader>ad <Action>(AndroidConnectDebuggerAction)
- 
- " Navigating
- nmap <leader>n <Action>(ShowNavBar)
- nmap <Leader>f <Action>(FileStructurePopup)
- 
- " Logcat
- nmap <leader>cl <Action>(Logcat.ClearLogcat)
- nmap <leader>ol <Action>(ActivateLogcatToolWindow)
- 
- " Run, debug, stop, sync
- nmap <Leader>ra <Action>(Run)
- nmap <Leader>da <Action>(Debug)
- nmap <Leader>sta <Action>(Stop)
- nmap <leader>sya <Action>(Android.SyncProject)
- nmap <leader>rat <Action>(RunClass)
- 
- " Indenting
- vnoremap < <gv
- vnoremap > >gv
- 
- " Projects
- nmap <leader>op <Action>(ManageRecentProjects)
- 
- " Restore default layout
- nmap <leader>rl <Action>(RestoreDefaultLayout)
- 
- " Remember these commands:
- 
- " Visual mode brackets:
- " vi( vi{ vi< va( va{ va< vaw
- 
- " Center screen
- " zz
- 
- " Show recent files
- " Ctrl + R
- 
- " Commenting
- " gcc or <Space>7
- 
- " Using sneak
- " Press "s" -> "is"
- " Goes to next "is" word
+" Find specific action :actionlist logcat
+
+mapclear
+
+let mapleader = ' '
+
+" --- Configuration ---
+set scrolloff=15
+set incsearch
+set tabstop=4
+set nu
+set relativenumber
+set ignorecase smartcase
+set timeout
+set timeoutlen=300
+
+" --- Plugins ---
+set idearefactormode=keep
+set ideajoin
+set easymotion
+set highlightedyank
+set surround
+set argtextobj
+set commentary
+
+" --- General Mappings ---
+" Select all
+nnoremap <leader>a ggVG
+
+" Undo / Redo
+nnoremap U <C-r>
+
+" Close tab
+nnoremap <leader>q :action CloseContent<CR>
+nnoremap Q :action CloseEditor<CR>
+
+" Move between tabs OR gt/gT
+nnoremap H :action PreviousTab<CR>
+nnoremap L :action NextTab<CR>
+
+" --- Yanking & Pasting ---
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+nnoremap <C-v> "+p
+nnoremap <C-S-v> "+p
+vnoremap <C-S-v> "+p
+inoremap <C-S-v> <C-r>+
+
+" Paste over selection without overwriting the register
+vnoremap <leader>p "_dP
+
+" Delete without overwriting clipboard
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" --- Cursor & Search Movement ---
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" --- IDE Search & Navigation ---
+nnoremap <leader>se :action SearchEverywhere<CR>
+nnoremap <leader>fa :action GotoAction<CR>
+nnoremap <leader>gc :action GotoClass<CR>
+nnoremap <leader>gf :action GotoFile<CR>
+nnoremap <leader>n  :action ShowNavBar<CR>
+nnoremap <leader>f  :action FileStructurePopup<CR>
+
+" --- Go To Actions (Standardized with Center Screen) ---
+nnoremap gi :action GotoImplementation<CR>zz
+nnoremap gd :action GotoTypeDeclaration<CR>zz
+nnoremap gs :action GotoSuperMethod<CR>zz
+nnoremap gq :action ShowIntentionActions<CR>
+nnoremap <leader>doc :action QuickJavaDoc<CR>
+nnoremap gr :action ShowUsages<CR>
+nnoremap gR :action FindUsages<CR>
+
+" --- Moving Lines / Selection ---
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap <A-j> :action MoveLineDown<CR>
+nnoremap <A-k> :action MoveLineUp<CR>
+vnoremap <A-j> :action MoveLineDown<CR>
+vnoremap <A-k> :action MoveLineUp<CR>
+
+" --- Config Shortcuts ---
+nnoremap <leader>src :source ~/.ideavimrc<CR>
+
+" --- Tool Windows ---
+nnoremap <leader>st  :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>sg  :action ActivateCommitToolWindow<CR>
+nnoremap <leader>sd  :action ActivateDebugToolWindow<CR>
+nnoremap <leader>sp  :action ActivateProjectToolWindow<CR>
+nnoremap <leader>sl  :action ActivateLogcatToolWindow<CR>
+
+" --- Code Editing ---
+nnoremap <leader>oi :action OptimizeImports<CR>
+
+" Commenting (The custom fix we discussed)
+nnoremap <leader>7 :action CommentByLineComment<CR>kzz
+vnoremap <leader>7 :action CommentByLineComment<CR>gvzz
+
+" --- Window Management ---
+nnoremap <leader>mt  :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <leader>cot :action CloseAllEditorsButActive<CR>
+nnoremap <leader>ca  :action CloseAllEditors<CR>
+nnoremap <leader>ch  :action CloseAllToTheLeft<CR>
+nnoremap <leader>cl  :action CloseAllToTheRight<CR>
+nnoremap <leader>rl  :action RestoreDefaultLayout<CR>
+
+" Splits
+nnoremap <C-w>v :vsplit<CR>
+nnoremap <C-w>s :split<CR>
+
+" --- Build / Run App ---
+nnoremap <leader>ar  :action Run<CR>
+nnoremap <leader>ard  :action Debug<CR>
+nnoremap <leader>as :action Stop<CR>
+nnoremap <leader>asy :action Android.SyncProject<CR>
+nnoremap <leader>art :action RunClass<CR>
+nnoremap <leader>sm  :action SelectMultipleDevices<CR>
+
+" --- Debugging ---
+nnoremap <leader>vb :action ViewBreakpoints<CR>
+nnoremap <leader>b  :action ToggleLineBreakpoint<CR>
+nnoremap <leader>ad :action AndroidConnectDebuggerAction<CR>
+
+" --- Indenting ---
+vnoremap < <gv
+vnoremap > >gv
+
+" --- Plugins / Leap ---
+nnoremap s :action AceAction<CR>
+vnoremap s :action AceAction<CR>
+
+" --- Jump List (Inversed as requested) ---
+nnoremap <C-i> :action Back<CR>
+nnoremap <C-o> :action Forward<CR>
+
+" --- Quick Tabs ---
+nnoremap <leader>1 :action GoToTab1<CR>
+nnoremap <leader>2 :action GoToTab2<CR>
+nnoremap <leader>3 :action GoToTab3<CR>
+nnoremap <leader>4 :action GoToTab4<CR>
+
+" ============================================================================
+" REMEMBER THESE COMMANDS:
+" ============================================================================
+
+" Visual mode brackets (Text Objects):
+" vi( -> select inside parens | vi{ -> select inside curly | vi< -> inside angle
+" va( -> select around parens | vaw -> select a word
+
+" Center screen
+" zz (Manually center if a mapping didn't do it for you)
+
+" Show recent files
+" Ctrl + E (IntelliJ default) or Ctrl + R
+
+" Commenting
+" <leader>7 -> Toggles // comments, stays on line, and centers.
+"
+" Go to next and previous tab
+" H and L (Mapped above to Shift+H and Shift+L)
+"
+" Go to next window group
+" C-W-w
+"
+" Go to right or left tab group
+" C-W-h OR C-W-l
+"
+" Using EasyMotion (Sneak-like)
+" Press "s" -> then type characters to jump.
+" If you want to go to next one press ";" and previous ","
+" ============================================================================

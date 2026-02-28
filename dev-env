@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 dry_run="0"
 
-if [ -z "$XDG_CONFIG_HOME" ]; then
-    echo "no xdg config hom"
+# XDG default
+if [[ -z "${XDG_CONFIG_HOME:-}" ]]; then
+    echo "no xdg config home"
     echo "using ~/.config"
-    XDG_CONFIG_HOME=$HOME/.config
+    XDG_CONFIG_HOME="$HOME/.config"
 fi
 
-if [ -z "$DEV_ENV" ]; then
+# Require DEV_ENV
+if [[ -z "${DEV_ENV:-}" ]]; then
     echo "env var DEV_ENV needs to be present"
     exit 1
 fi
 
-if [[ $1 == "--dry" ]]; then
+if [[ "${1:-}" == "--dry" ]]; then
     dry_run="1"
 fi
 
 log() {
-    if [[ $dry_run == "1" ]]; then
+    if [[ "$dry_run" == "1" ]]; then
         echo "[DRY_RUN]: $1"
     else
         echo "$1"
@@ -26,47 +30,47 @@ log() {
 
 log "env: $DEV_ENV"
 
-update_files() {
-    log "copying over files from: $1"
-    pushd $1 &> /dev/null
-    (
-        configs=`find . -mindepth 1 -maxdepth 1 -type d`
-        for c in $configs; do
-            directory=${2%/}/${c#./}
-            log "    removing: rm -rf $directory"
+sync_dir() {
+    local src="$1"
+    local dst="$2"
 
-            if [[ $dry_run == "0" ]]; then
-                rm -rf $directory
-            fi
+    log "syncing: $src -> $dst"
+    mkdir -p "$dst"
 
-            log "    copying env: cp $c $2"
-            if [[ $dry_run == "0" ]]; then
-                cp -r ./$c $2
-            fi
-        done
-
-    )
-    popd &> /dev/null
-}
-
-copy() {
-    log "removing: $2"
-    if [[ $dry_run == "0" ]]; then
-        rm $2
-    fi
-    log "copying: $1 to $2"
-    if [[ $dry_run == "0" ]]; then
-        cp $1 $2
+    if [[ "$dry_run" == "0" ]]; then
+        rsync -a --delete "$src/" "$dst/"
+    else
+        rsync -a --delete --dry-run "$src/" "$dst/"
     fi
 }
 
-update_files $DEV_ENV/env/.config $XDG_CONFIG_HOME
-update_files $DEV_ENV/env/.local $HOME/.local
+copy_file() {
+    local src="$1"
+    local dst="$2"
 
-copy $DEV_ENV/env/.profile $HOME/.profile
-copy $DEV_ENV/env/.zsh_profile $HOME/.zsh_profile
-copy $DEV_ENV/env/.zshrc $HOME/.zshrc
-copy $DEV_ENV/env/.vimrc $HOME/.vimrc
-copy $DEV_ENV/env/.ideavimrc $HOME/.ideavimrc
+    log "removing: $dst"
+    if [[ "$dry_run" == "0" ]]; then
+        rm -f "$dst"
+    fi
 
-hyprctl reload
+    log "copying: $src to $dst"
+    if [[ "$dry_run" == "0" ]]; then
+        cp "$src" "$dst"
+    fi
+}
+
+# Sync config dirs
+sync_dir "$DEV_ENV/env/.config" "$XDG_CONFIG_HOME"
+
+# Copy dotfiles
+copy_file "$DEV_ENV/env/.zsh_profile" "$HOME/.zsh_profile"
+copy_file "$DEV_ENV/env/.zshrc" "$HOME/.zshrc"
+copy_file "$DEV_ENV/env/.vimrc" "$HOME/.vimrc"
+copy_file "$DEV_ENV/env/.ideavimrc" "$HOME/.ideavimrc"
+
+# Reload Hyprland if available (skip in dry-run)
+if [[ "$dry_run" == "0" ]] && command -v hyprctl >/dev/null 2>&1; then
+    hyprctl reload || true
+fi
+
+log "ok"
