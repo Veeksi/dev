@@ -74,9 +74,9 @@ nnoremap gi :action GotoImplementation<CR>zz
 nnoremap gd :action GotoTypeDeclaration<CR>zz
 nnoremap gs :action GotoSuperMethod<CR>zz
 nnoremap gq :action ShowIntentionActions<CR>
-nnoremap <leader>doc :action QuickJavaDoc<CR>
 nnoremap gr :action ShowUsages<CR>
 nnoremap gR :action FindUsages<CR>
+nnoremap <leader>doc :action QuickJavaDoc<CR>
 
 " --- Moving Lines / Selection ---
 vnoremap J :m '>+1<CR>gv
@@ -118,11 +118,12 @@ nnoremap <C-w>s :split<CR>
 
 " --- Build / Run App ---
 nnoremap <leader>ar  :action Run<CR>
-nnoremap <leader>ard  :action Debug<CR>
-nnoremap <leader>as :action Stop<CR>
+nnoremap <leader>ard :action Debug<CR>
+nnoremap <leader>as  :action Stop<CR>
 nnoremap <leader>asy :action Android.SyncProject<CR>
 nnoremap <leader>art :action RunClass<CR>
 nnoremap <leader>sm  :action SelectMultipleDevices<CR>
+nnoremap <leader>ra  :action Synchronize<CR>
 
 " --- Debugging ---
 nnoremap <leader>vb :action ViewBreakpoints<CR>
