@@ -44,7 +44,6 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
 
-nnoremap <C-v> "+p
 nnoremap <C-S-v> "+p
 vnoremap <C-S-v> "+p
 inoremap <C-S-v> <C-r>+
