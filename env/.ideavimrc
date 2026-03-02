@@ -13,7 +13,7 @@ set nu
 set relativenumber
 set ignorecase smartcase
 set timeout
-set timeoutlen=300
+set timeoutlen=500
 
 " --- Plugins ---
 set idearefactormode=keep
@@ -106,6 +106,7 @@ vnoremap <leader>7 :action CommentByLineComment<CR>gvzz
 
 " --- Window Management ---
 nnoremap <leader>mt  :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <leader>mr  :action RecentProjectListGroup<CR>
 nnoremap <leader>cot :action CloseAllEditorsButActive<CR>
 nnoremap <leader>ca  :action CloseAllEditors<CR>
 nnoremap <leader>ch  :action CloseAllToTheLeft<CR>
