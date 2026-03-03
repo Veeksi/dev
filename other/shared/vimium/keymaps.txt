@@ -4,9 +4,17 @@ unmap L
 unmap J
 unmap K
 
+" Remove tab removals
+unmap <space>
+unmap x
+
 " Tab switching like IDE / Neovim buffer movement
 map H previousTab
 map L nextTab
+
+" Tab removal
+map <space>q removeTab
+map <space>Q restoreTab
 
 " History navigation like Neovim jumplist
 map <c-o> goBack
