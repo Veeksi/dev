@@ -1,0 +1,13 @@
+" Remove default mappings
+unmap H
+unmap L
+unmap J
+unmap K
+
+" Tab switching like IDE / Neovim buffer movement
+map H previousTab
+map L nextTab
+
+" History navigation like Neovim jumplist
+map <c-o> goBack
+map <c-i> goForward
