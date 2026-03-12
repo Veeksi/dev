@@ -125,7 +125,7 @@ nnoremap <leader>asy :action Android.SyncProject<CR>
 nnoremap <leader>art :action RunClass<CR>
 nnoremap <leader>arc :action RunCoverage<CR>
 nnoremap <leader>arg :action ChooseRunConfiguration<CR>
-nnoremap <leader>sd  :action SelectMultipleDevices<CR>
+nnoremap <leader>smd  :action SelectMultipleDevices<CR>
 nnoremap <leader>sb  :action SelectBuildVariant<CR>
 nnoremap <leader>ra  :action Synchronize<CR>
 
