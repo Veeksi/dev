@@ -92,6 +92,7 @@ nnoremap <leader>src :source ~/.ideavimrc<CR>
 " --- Tool Windows ---
 nnoremap <leader>st  :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>sg  :action ActivateCommitToolWindow<CR>
+nnoremap <leader>sr  :action ActivateRunToolWindow<CR>
 nnoremap <leader>sd  :action ActivateDebugToolWindow<CR>
 nnoremap <leader>sp  :action ActivateProjectToolWindow<CR>
 nnoremap <leader>sl  :action ActivateLogcatToolWindow<CR>
@@ -122,13 +123,17 @@ nnoremap <leader>ard :action Debug<CR>
 nnoremap <leader>as  :action Stop<CR>
 nnoremap <leader>asy :action Android.SyncProject<CR>
 nnoremap <leader>art :action RunClass<CR>
-nnoremap <leader>sm  :action SelectMultipleDevices<CR>
+nnoremap <leader>arc :action RunCoverage<CR>
+nnoremap <leader>arg :action ChooseRunConfiguration<CR>
+nnoremap <leader>sd  :action SelectMultipleDevices<CR>
+nnoremap <leader>sb  :action SelectBuildVariant<CR>
 nnoremap <leader>ra  :action Synchronize<CR>
 
 " --- Debugging ---
 nnoremap <leader>vb :action ViewBreakpoints<CR>
 nnoremap <leader>b  :action ToggleLineBreakpoint<CR>
 nnoremap <leader>ad :action AndroidConnectDebuggerAction<CR>
+nnoremap <leader>gb :action Annotate<CR>
 
 " --- Indenting ---
 vnoremap < <gv
@@ -147,6 +152,11 @@ nnoremap <leader>1 :action GoToTab1<CR>
 nnoremap <leader>2 :action GoToTab2<CR>
 nnoremap <leader>3 :action GoToTab3<CR>
 nnoremap <leader>4 :action GoToTab4<CR>
+
+" --- Git ---
+nnoremap <C-k> :action PreviousDiff<CR>
+nnoremap <C-j> :action NextDiff<CR>
+nnoremap <C-h> :action Compare.ApplyLeftSide<CR>
 
 " ============================================================================
 " REMEMBER THESE COMMANDS:
