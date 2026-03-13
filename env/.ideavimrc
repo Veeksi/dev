@@ -32,8 +32,8 @@ nnoremap <leader>a ggVG
 nnoremap U <C-r>
 
 " Close tab
-nnoremap <leader>q :action CloseContent<CR>
-nnoremap Q :action CloseEditor<CR>
+nnoremap <leader>q  :action CloseContent<CR>
+nnoremap <C-W>q     :action CloseContent<CR>
 
 " Move between tabs OR gt/gT
 nnoremap H :action PreviousTab<CR>
@@ -76,7 +76,6 @@ nnoremap gs :action GotoSuperMethod<CR>zz
 nnoremap gq :action ShowIntentionActions<CR>
 nnoremap gr :action ShowUsages<CR>
 nnoremap gR :action FindUsages<CR>
-nnoremap <leader>doc :action QuickJavaDoc<CR>
 
 " --- Moving Lines / Selection ---
 vnoremap J :m '>+1<CR>gv
@@ -94,7 +93,8 @@ nnoremap <leader>st  :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>sg  :action ActivateCommitToolWindow<CR>
 nnoremap <leader>sr  :action ActivateRunToolWindow<CR>
 nnoremap <leader>sd  :action ActivateDebugToolWindow<CR>
-nnoremap <leader>sp  :action ActivateProjectToolWindow<CR>
+nnoremap <leader>sf  :action ActivateProjectToolWindow<CR>
+nnoremap <leader>sp  :action ActivateVersionControlToolWindow<CR>
 nnoremap <leader>sl  :action ActivateLogcatToolWindow<CR>
 
 " --- Code Editing ---
@@ -125,7 +125,7 @@ nnoremap <leader>asy :action Android.SyncProject<CR>
 nnoremap <leader>art :action RunClass<CR>
 nnoremap <leader>arc :action RunCoverage<CR>
 nnoremap <leader>arg :action ChooseRunConfiguration<CR>
-nnoremap <leader>smd  :action SelectMultipleDevices<CR>
+nnoremap <leader>smd :action SelectMultipleDevices<CR>
 nnoremap <leader>sb  :action SelectBuildVariant<CR>
 nnoremap <leader>ra  :action Synchronize<CR>
 
@@ -146,12 +146,6 @@ vnoremap s :action AceAction<CR>
 " --- Jump List (Inversed as requested) ---
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
-
-" --- Quick Tabs ---
-nnoremap <leader>1 :action GoToTab1<CR>
-nnoremap <leader>2 :action GoToTab2<CR>
-nnoremap <leader>3 :action GoToTab3<CR>
-nnoremap <leader>4 :action GoToTab4<CR>
 
 " --- Git ---
 nnoremap <C-k> :action PreviousDiff<CR>
@@ -188,3 +182,4 @@ nnoremap <C-h> :action Compare.ApplyLeftSide<CR>
 " Press "s" -> then type characters to jump.
 " If you want to go to next one press ";" and previous ","
 " ============================================================================
+
