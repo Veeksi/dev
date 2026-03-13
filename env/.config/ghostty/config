@@ -4,6 +4,7 @@ theme = Rose Pine
 background = 000000
 background-opacity = 0.9
 background-blur = false
+font-size = 11
 
 shell-integration-features = cursor,no-sudo,no-title
 confirm-close-surface = false
