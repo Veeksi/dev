@@ -94,7 +94,8 @@ nnoremap <leader>sg  :action ActivateCommitToolWindow<CR>
 nnoremap <leader>sr  :action ActivateRunToolWindow<CR>
 nnoremap <leader>sd  :action ActivateDebugToolWindow<CR>
 nnoremap <leader>sf  :action ActivateProjectToolWindow<CR>
-nnoremap <leader>sp  :action ActivateVersionControlToolWindow<CR>
+nnoremap <leader>sp  :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>sv  :action ActivateVersionControlToolWindow<CR>
 nnoremap <leader>sl  :action ActivateLogcatToolWindow<CR>
 
 " --- Code Editing ---
