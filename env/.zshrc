@@ -13,9 +13,9 @@ plugins=(git asdf zsh-autosuggestions)
 source "$ZSH/oh-my-zsh.sh"
 
 # Auto-start tmux
-if [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new-session -s default
-fi
+#if [ -z "$TMUX" ]; then
+#  tmux attach -t default || tmux new-session -s default
+#fi
 
 # Aliases
 alias yay='paru'
