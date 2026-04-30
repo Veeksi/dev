@@ -54,6 +54,8 @@ vnoremap <leader>p "_dP
 " Delete without overwriting clipboard
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+nnoremap <leader>c "_c
+vnoremap <leader>c "_c
 
 " --- Cursor & Search Movement ---
 nnoremap <C-d> <C-d>zz
