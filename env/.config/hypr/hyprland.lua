@@ -78,7 +78,7 @@ end)
 hl.config({
 	general = {
 		gaps_in = 5,
-		gaps_out = 5,
+		gaps_out = 0,
 		border_size = 2,
 
 		col = {
@@ -90,6 +90,12 @@ hl.config({
 				angle = 45,
 			},
 			inactive_border = "rgba(595959aa)",
+		},
+
+		snap = {
+			enabled = true,
+			window_gap = 10, -- snap distance to other windows
+			monitor_gap = 10, -- snap distance to monitor edges
 		},
 
 		resize_on_border = false,
@@ -212,6 +218,9 @@ hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+
+-- Locking
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -------------------------
 -- WORKSPACE SWITCHING
